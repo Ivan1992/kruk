@@ -1,2 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@font-face {
+    font-family: Kalashnikov;
+    src: url('./assets/fonts/Kalashnikov.ttf');
+}
+
+.kalashnikov {
+    font-family: Kalashnikov;
+    font-size: 6em;
+    border-color: transparent;
+}
+
+.red {
+    color: red;
+}

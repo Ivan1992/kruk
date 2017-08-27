@@ -3,23 +3,34 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SimpletinyComponent } from './simpletiny.component';
-import { TinyEditorComponent } from './tiny-editor/tiny-editor.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@angular/material';
+
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { KeysPipe } from './keys.pipe';
+
+import { LocalStorageModule } from 'angular-2-local-storage';
 
 @NgModule({
   declarations: [
     AppComponent,
     SimpletinyComponent,
-    TinyEditorComponent
+    KeysPipe
   ],
   imports: [
     BrowserModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFontAwesomeModule,
+    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
+    LocalStorageModule.withConfig({
+      prefix: 'my-app',
+      storageType: 'localStorage'
+  })
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

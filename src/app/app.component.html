@@ -7,18 +7,61 @@
 </div>
 <h1>tinymce:</h1>
 
-<md-grid-list cols="2">
-  <md-grid-tile>
-    <app-tiny-editor [elementId]="'my-editor-id'">
-      </app-tiny-editor>
-  </md-grid-tile>
-  <md-grid-tile>
-    <p>
-      Output 2:
-      {{out}}
-    </p>
-  </md-grid-tile>
-</md-grid-list>
+
+<table width="100%">
+  <tr>
+    <td width="50%">
+        <div [froalaEditor]="options" [(froalaModel)]="content" (froalaInit)="initialize($event)" >Hello, Froala!</div>
+        <!--<div [froalaView]="content"></div>-->
+        <h2> HTML </h2>
+        <div>{{content}}</div>
+    </td>
+    <td width="50%">
+        <table class="kalashnikov" style="border-collapse: collapse; border: 1px solid black;">
+            <tr>
+              <td (click)="addContent()"><span class='red'>í</span>Wa</td>
+              <td (click)="sanitize()"><span class="red">ö</span>SM</td>
+              <td (click)="desanitize()"><span class="red">ì</span>L9</td>
+              <td><span class="red">ì+</span>SJ{{'{'}}.</td>
+              <td><span class="red">âÐá</span>SK{{'{'}}{{'}'}}.2</td>
+            </tr>
+          </table>
+    </td>
+  </tr>
+</table>
+
+
+<br /> <br />
+<button md-raised-button (click)="status()">Статус в консоль</button>
+<div *ngFor="let kruk of KRUK; let i = index;">
+    <md-card *ngIf="i > 270">
+        
+        <div class="kalashnikov" [innerHtml]="KRUK[i].value"></div>
+        <span style="font-size:2em">{{i}}</span>
+        <md-input-container style="width: 30%;">
+          <input mdInput placeholder="значение" [value]="KRUK[i].value" (input)="KRUK[i].value = $event.target.value">
+        </md-input-container>
+        <md-input-container>
+          <input mdInput placeholder="Самая высокая нота" [value]="KRUK[i].pitch" (input)="KRUK[i].pitch = $event.target.value">
+        </md-input-container>
+        <md-input-container>
+            <input mdInput placeholder="Кол-во звуков" [value]="KRUK[i].sounds" (input)="KRUK[i].sounds = $event.target.value">
+          </md-input-container>
+        <br />
+        <span *ngFor="let entry of KRUK[i] | keys">
+          <!--<md-input-container *ngIf="entry.key !== 'value' && entry.key !== 'pitch'">
+             <input mdInput placeholder="{{entry.key}}" value="{{entry.value}}">
+          </md-input-container>-->
+          <md-checkbox *ngIf="entry.key !== 'value' && entry.key !== 'pitch' && entry.key !== 'sounds'" 
+            [checked]="entry.value" (change)="KRUK[i][entry.key] = KRUK[i][entry.key] == 1 ? 0 : 1">{{entry.key}}</md-checkbox>
+        </span>
+        <hr />
+    </md-card>
+    
+</div>
+<br /><br />
+<button md-raised-button (click)="add()">Добавить крюк</button>
+<button md-raised-button (click)="save()">Сохранить</button>
 
 
 
