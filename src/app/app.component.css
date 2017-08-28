@@ -1,10 +1,10 @@
 @font-face {
-    font-family: Kalashnikov;
-    src: url('../assets/fonts/Kalashnikov.ttf');
+    font-family: Kruk;
+    src: url('../assets/fonts/Kruk-Kalashn.ttf');
 }
 
 .kalashnikov {
-    font-family: Kalashnikov;
+    font-family: Kruk;
     font-size: 6em;
     border: 0;
 }

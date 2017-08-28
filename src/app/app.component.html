@@ -34,7 +34,7 @@
 <br /> <br />
 <button md-raised-button (click)="status()">Статус в консоль</button>
 <div *ngFor="let kruk of KRUK; let i = index;">
-    <md-card *ngIf="i > 270">
+    <md-card *ngIf="i > -1">
         
         <div class="kalashnikov" [innerHtml]="KRUK[i].value"></div>
         <span style="font-size:2em">{{i}}</span>
