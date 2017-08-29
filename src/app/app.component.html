@@ -1,37 +1,40 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Welcome to {{title}}!
+    Крюковод
   </h1>
-  <img width="50" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo=">
 </div>
-<h1>tinymce:</h1>
 
 
-<table width="100%">
-  <tr>
-    <td width="50%">
-        <div [froalaEditor]="options" [(froalaModel)]="content" (froalaInit)="initialize($event)" >Hello, Froala!</div>
-        <!--<div [froalaView]="content"></div>-->
-        <h2> HTML </h2>
-        <div>{{content}}</div>
-    </td>
-    <td width="50%">
-        <table class="kalashnikov" style="border-collapse: collapse; border: 1px solid black;">
-            <tr>
-              <td (click)="addContent()"><span class='red'>í</span>Wa</td>
-              <td (click)="sanitize()"><span class="red">ö</span>SM</td>
-              <td (click)="desanitize()"><span class="red">ì</span>L9</td>
-              <td><span class="red">ì+</span>SJ{{'{'}}.</td>
-              <td><span class="red">âÐá</span>SK{{'{'}}{{'}'}}.2</td>
-            </tr>
-          </table>
-    </td>
+<div>
+  <div [froalaEditor]="options" [(froalaModel)]="content" (froalaInit)="initialize($event)" >Hello, Froala!</div>
+    <!--<div [froalaView]="content"></div>
+    <h2> HTML </h2>
+    <div>{{content}}</div>-->
+</div>
+
+
+<div style="align-content: center">
+
+ <md-checkbox *ngFor="let c of notes" [(ngModel)]="c.value">{{c.name}}</md-checkbox>
+
+  <md-input-container>
+    <input mdInput placeholder="Кол-во звуков" [(ngModel)]="sounds">
+  </md-input-container>
+ 
+  <div *ngFor="let p of opts">
+    <md-checkbox [(ngModel)]="p.value">{{p.label}}</md-checkbox>
+  </div>
+
+  <h1>{{opts[0].value}}</h1>
+<table class="kalashnikov centerTable">
+  <tr *ngFor="let row of doubleArray">
+    <td *ngFor="let item of row | krukfilter: opts[0].value" [ngClass]="item.clazz ? item.clazz : ''" (mouseenter)="hoverIn(item)" (mouseleave)="hoverOut(item)" [innerHtml]="item.value" (click)="addValue(item.value)" style="padding: 5px;"></td>
   </tr>
 </table>
+</div>
 
-
-<br /> <br />
+<!--<br /> <br />
 <button md-raised-button (click)="status()">Статус в консоль</button>
 <div *ngFor="let kruk of KRUK; let i = index;">
     <md-card *ngIf="i > -1">
@@ -49,9 +52,6 @@
           </md-input-container>
         <br />
         <span *ngFor="let entry of KRUK[i] | keys">
-          <!--<md-input-container *ngIf="entry.key !== 'value' && entry.key !== 'pitch'">
-             <input mdInput placeholder="{{entry.key}}" value="{{entry.value}}">
-          </md-input-container>-->
           <md-checkbox *ngIf="entry.key !== 'value' && entry.key !== 'pitch' && entry.key !== 'sounds'" 
             [checked]="entry.value" (change)="KRUK[i][entry.key] = KRUK[i][entry.key] == 1 ? 0 : 1">{{entry.key}}</md-checkbox>
         </span>
@@ -61,7 +61,7 @@
 </div>
 <br /><br />
 <button md-raised-button (click)="add()">Добавить крюк</button>
-<button md-raised-button (click)="save()">Сохранить</button>
+<button md-raised-button (click)="save()">Сохранить</button>-->
 
 
 

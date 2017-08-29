@@ -5,10 +5,26 @@
 
 .kalashnikov {
     font-family: Kruk;
-    font-size: 6em;
+    font-size: 4em;
     border: 0;
 }
 
 .red {
     color: red;
+}
+
+table.centerTable { border: 1px solid #000; border-collapse: collapse; }
+table.centerTable td { border-left: 1px solid #000; border-bottom: 1px solid #000; }
+table.centerTable td:first-child { border-left: none; }
+
+.centerTable {
+    /*border-collapse: collapse;*/
+    /*border: 5px solid black;*/
+    margin: 0px auto;
+    text-align: center;
+}
+
+.highlight {
+    background-color: gainsboro;
+    cursor: pointer;
 }

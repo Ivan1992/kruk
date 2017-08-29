@@ -12,12 +12,15 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { KeysPipe } from './keys.pipe';
 
 import { LocalStorageModule } from 'angular-2-local-storage';
+import { FormsModule } from '@angular/forms';
+import { KrukfilterPipe } from './krukfilter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     SimpletinyComponent,
-    KeysPipe
+    KeysPipe,
+    KrukfilterPipe
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ import { LocalStorageModule } from 'angular-2-local-storage';
     LocalStorageModule.withConfig({
       prefix: 'my-app',
       storageType: 'localStorage'
-  })
+  }),
+    FormsModule
   ],
   providers: [ ],
   bootstrap: [AppComponent]
