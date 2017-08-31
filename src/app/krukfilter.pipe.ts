@@ -5,18 +5,17 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class KrukfilterPipe implements PipeTransform {
 
-  transform(array: any, args?: any): any {
-    //console.log("args[0]="+JSON.stringify(args[1]));
-    if (args) {
-      array = array.filter(item => item["borzaya"]);
-    }
-    /* args.forEach(e => {
+  transform(array: any, opts?: any, notes?: any): any {
+    opts.forEach(e => {
       if (e.value) {
-        console.log("changed");
         array = array.filter(item => item[e.name]);
       }
-    }); */
-    //return array.filter(item => borzaya?item.borzaya==borzaya:true);
+    });
+    notes.forEach(e => {
+      if (e.value) {
+        array = array.filter(item => item.pitch === e.name);
+      }
+    });
     return array;
   }
 

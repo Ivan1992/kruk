@@ -46,6 +46,7 @@ export class AppComponent implements AfterViewInit {
     this.initControls.getEditor()('selection.restore');
     this.initControls.getEditor()('html.insert', "<span class='kalashnikov'>"+value+"</span>");
     this.initControls.getEditor()('commands.clearFormatting');
+    this.initControls.getEditor()('selection.save');
   }
 
   getCookie(key: string)  {
@@ -80,7 +81,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   buildArr(theArr) {
-    let step = 6;
+    let step = 10;
     var arrOfarr = [];
     for(var i = 0; i < theArr.length ; i+=step) {
         var row = [];
@@ -100,11 +101,12 @@ export class AppComponent implements AfterViewInit {
     charCounterCount: true,
     enter: $.FroalaEditor.ENTER_BR,
     // toolbarInline: true,
-    htmlDoNotWrapTags: ['p', 'span'],
+    //htmlDoNotWrapTags: ['p', 'span'],
     events: {
       'froalaEditor.initialized': function() {
       },
       'froalaEditor.blur': function(e, editor) {
+        //editor.html.insert('#');
         editor.selection.save();
       }
     },
