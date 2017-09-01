@@ -226,6 +226,17 @@ $.FE.LANGUAGE['ru'] = {
   direction: "ltr"
 };
 
+$.FroalaEditor.DefineIcon('insert', {NAME: 'minus'});
+$.FroalaEditor.RegisterCommand('insert', {
+  title: 'Тире',
+  focus: true,
+  undo: true,
+  refreshAfterCallback: true,
+  callback: function () {
+    this.html.insert('—');
+  }
+});
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html', 
@@ -326,13 +337,19 @@ export class AppComponent implements AfterViewInit {
     tableStyles: {
       noborders: 'Убрать границы'
     },
+    fontFamilySelection: true,
     placeholderText: "Наберите текст...",
-    width: '800',
+    width: '21cm',
+    height: '300',
+    colorsText: ['#000000', '#FF0000', 'REMOVE'],
     fontFamily: {
-      'Turaevo': 'гDи ї©е хрcтE поми1луй нaсъ',
-      'Grebnev': 'гDи ї©е хрcтE поми1луй нaсъ',
-      'KanonnikUCS': 'гDи ї©е хрcтE поми1луй нaсъ',
-      'KnigopechatnyaUCS': 'гDи ї©е хрcтE поми1луй нaсъ',
+      'Turaevo': 'Тураево',
+      'Grebnev': 'Гребнев',
+      'KanonnikUCS': 'Канонник',
+      'KnigopechatnyaUCS': 'Книгопечатная',
+      'Vetrograd': 'Ветроград (для заглавных)',
+      'Bukvica': 'Буквица (для заглавных)',
+      'Indycton': 'Индиктон (для заглавных)',
     },
     // toolbarInline: true,
     //htmlDoNotWrapTags: ['p', 'span'],
@@ -344,7 +361,7 @@ export class AppComponent implements AfterViewInit {
         editor.selection.save();
       }
     },
-    toolbarButtons: ['fullscreen', 'bold', 'italic', 'underline', '|', 'fontFamily', 'fontSize', 'color', '|', 'align', '-', 'insertTable', '|', 'insertHR', 'clearFormatting', '|', 'print', 'help', 'html', '|', 'undo', 'redo']
+    toolbarButtons: ['fullscreen', 'bold', 'italic', 'underline', '|', 'fontFamily', 'fontSize', 'color', '|', 'align',  'insertTable', '|', 'insert', 'clearFormatting', '|', 'print', 'help', 'html']
   };
     opts = [{label: "Борзая", name: "borzaya", value: false},
             {label: "Тихая", name: "tihaya", value: false},

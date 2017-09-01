@@ -23,6 +23,20 @@
     src: url('../assets/fonts/KnigopechatnyaUCS.ttf');
 }
 
+@font-face {
+    font-family: Vetrograd;
+    src: url('../assets/fonts/VertUcs.ttf');
+}
+
+@font-face {
+    font-family: Bukvica;
+    src: url('../assets/fonts/bukvica.ttf');
+}
+
+@font-face {
+    font-family: Indycton;
+    src: url('../assets/fonts/IndUcs.ttf');
+}
 
 .kalashnikov {
     font-family: Kruk;
