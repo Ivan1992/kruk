@@ -9,8 +9,8 @@ import { MaterialModule } from '@angular/material';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
-import { KeysPipe } from './keys.pipe';
 
+import { KeysPipe } from './keys.pipe';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { FormsModule } from '@angular/forms';
 import { KrukfilterPipe } from './krukfilter.pipe';

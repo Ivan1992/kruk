@@ -5,9 +5,8 @@
   </h1>
 </div>
 
-
 <div>
-  <div [froalaEditor]="options" [(froalaModel)]="content" (froalaInit)="initialize($event)" >Hello, Froala!</div>
+  <div [froalaEditor]="options" [(froalaModel)]="content" (froalaInit)="initialize($event)" ></div>
     <!--<div [froalaView]="content"></div>
     <h2> HTML </h2>
     <div>{{content}}</div>-->
@@ -22,11 +21,10 @@
     <input mdInput placeholder="Кол-во звуков" [(ngModel)]="sounds">
   </md-input-container>
  
-  <div *ngFor="let p of opts">
-    <md-checkbox [(ngModel)]="p.value">{{p.label}}</md-checkbox>
+  <div>
+    <md-checkbox *ngFor="let p of opts" [(ngModel)]="p.value">{{p.label}}</md-checkbox>
   </div>
 
-  <h1>{{opts[0].value}}</h1>
 <table class="kalashnikov centerTable">
   <tr *ngFor="let row of doubleArray">
     <td *ngFor="let item of row | krukfilter: opts:notes:opts[0].value:opts[1].value:opts[2].value:opts[3].value:opts[4].value:opts[5].value:opts[6].value:opts[7].value:opts[8].value:opts[9].value:opts[10].value:opts[11].value:opts[12].value:notes[0].value:notes[1].value:notes[2].value:notes[3].value:notes[4].value:notes[5].value" [ngClass]="item.clazz ? item.clazz : ''" (mouseenter)="hoverIn(item)" (mouseleave)="hoverOut(item)" [innerHtml]="item.value" (click)="addValue(item.value)" style="padding: 5px;"></td>

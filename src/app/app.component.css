@@ -3,6 +3,27 @@
     src: url('../assets/fonts/Kruk-Kalashn.ttf');
 }
 
+@font-face {
+    font-family: Turaevo;
+    src: url('../assets/fonts/Turaevo.ttf');
+}
+
+@font-face {
+    font-family: Grebnev;
+    src: url('../assets/fonts/GrebnevUCS.ttf');
+}
+
+@font-face {
+    font-family: KanonnikUCS;
+    src: url('../assets/fonts/KanonnikUCS.ttf');
+}
+
+@font-face {
+    font-family: KnigopechatnyaUCS;
+    src: url('../assets/fonts/KnigopechatnyaUCS.ttf');
+}
+
+
 .kalashnikov {
     font-family: Kruk;
     font-size: 4em;
@@ -11,17 +32,6 @@
 
 .red {
     color: red;
-}
-
-table.centerTable { border: 1px solid #000; border-collapse: collapse; }
-table.centerTable td { border-left: 1px solid #000; border-bottom: 1px solid #000; }
-table.centerTable td:first-child { border-left: none; }
-
-.centerTable {
-    /*border-collapse: collapse;*/
-    /*border: 5px solid black;*/
-    margin: 0px auto;
-    text-align: center;
 }
 
 .highlight {

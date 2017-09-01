@@ -8,10 +8,37 @@
 
 .kalashnikov {
     font-family: Kruk;
-    font-size: 6em;
+    font-size: 3em;
     border-color: transparent;
 }
 
 .red {
     color: red;
+}
+
+table {
+    border: none;
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 0;
+}
+
+.noborders thead tr th, .noborders tbody tr td  {
+    border-style: hidden;
+    border: none;
+    text-align: center;
+}
+
+.noborders {
+    border: none;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.fr-view {
+  font-family: "Turaevo";
+  font-size: 30px;
+  color: #000;
 }
