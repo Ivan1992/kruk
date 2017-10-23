@@ -1,4 +1,9 @@
 @font-face {
+    font-family: CyrillicOld;
+    src: url('../assets/fonts/CyrillicOld.ttf');
+}
+
+@font-face {
     font-family: Kruk;
     src: url('../assets/fonts/Kruk-Kalashn.ttf');
 }
