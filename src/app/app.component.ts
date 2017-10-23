@@ -339,10 +339,11 @@ export class AppComponent implements AfterViewInit {
     },
     fontFamilySelection: true,
     placeholderText: "Наберите текст...",
-    width: '21cm',
+    width: '100%',
     height: '300',
     colorsText: ['#000000', '#FF0000', 'REMOVE'],
     fontFamily: {
+      'CyrillicOld': 'English',
       'Turaevo': 'Тураево',
       'Grebnev': 'Гребнев',
       'KanonnikUCS': 'Канонник',
