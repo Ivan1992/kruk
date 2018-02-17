@@ -12,54 +12,47 @@
     <div>{{content}}</div>-->
 </div>
 
+<div style="margin: auto; width: 50%; padding-top:40px">
 
-<div style="align-content: center">
+<mat-checkbox *ngFor="let c of notes" [(ngModel)]="c.value">{{c.name}}</mat-checkbox>
 
- <md-checkbox *ngFor="let c of notes" [(ngModel)]="c.value">{{c.name}}</md-checkbox>
+<mat-form-field style="display:block">
+  <input matInput placeholder="Название">
+</mat-form-field>
 
-  <md-input-container>
-    <input mdInput placeholder="Кол-во звуков" [(ngModel)]="sounds">
-  </md-input-container>
- 
-  <div>
-    <md-checkbox *ngFor="let p of opts" [(ngModel)]="p.value">{{p.label}}</md-checkbox>
-  </div>
+  <mat-form-field style="width:49%">
+    <input matInput placeholder="Кол-во звуков" [(ngModel)]="sounds">
+  </mat-form-field>
 
-<table class="kalashnikov centerTable" align="center">
+  <mat-form-field style="width:49%">
+    <mat-select placeholder="Признаки" multiple>
+      <mat-option *ngFor="let p of opts" [value]="p.value">{{p.label}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!--<div>
+    <mat-checkbox *ngFor="let p of opts" [(ngModel)]="p.value">{{p.label}}</mat-checkbox>
+  </div>-->
+</div>
+
+  <mat-grid-list cols="6" class="kalashnikov centerTable" align="center" rowHeight="60px" style="cursor: pointer;">
+    <mat-grid-tile
+        *ngFor="let item of doubleArray"
+        style.background = "lightblue"
+        [ngClass]="item.clazz ? item.clazz : ''"
+        [innerHtml]="item.value"
+        (click)="addValue(item.value)">
+    </mat-grid-tile>
+  </mat-grid-list>
+
+
+<!--<table class="kalashnikov centerTable" align="center">
   <tr *ngFor="let row of doubleArray">
     <td *ngFor="let item of row | krukfilter: opts:notes:sounds:opts[0].value:opts[1].value:opts[2].value:opts[3].value:opts[4].value:opts[5].value:opts[6].value:opts[7].value:opts[8].value:opts[9].value:opts[10].value:opts[11].value:opts[12].value:notes[0].value:notes[1].value:notes[2].value:notes[3].value:notes[4].value:notes[5].value" [ngClass]="item.clazz ? item.clazz : ''" (mouseenter)="hoverIn(item)" (mouseleave)="hoverOut(item)" [innerHtml]="item.value" (click)="addValue(item.value)" style="padding: 5px;"></td>
   </tr>
 </table>
-</div>
+</div>-->
 
-<!--<br /> <br />
-<button md-raised-button (click)="status()">Статус в консоль</button>
-<div *ngFor="let kruk of KRUK; let i = index;">
-    <md-card *ngIf="i > -1">
-        
-        <div class="kalashnikov" [innerHtml]="KRUK[i].value"></div>
-        <span style="font-size:2em">{{i}}</span>
-        <md-input-container style="width: 30%;">
-          <input mdInput placeholder="значение" [value]="KRUK[i].value" (input)="KRUK[i].value = $event.target.value">
-        </md-input-container>
-        <md-input-container>
-          <input mdInput placeholder="Самая высокая нота" [value]="KRUK[i].pitch" (input)="KRUK[i].pitch = $event.target.value">
-        </md-input-container>
-        <md-input-container>
-            <input mdInput placeholder="Кол-во звуков" [value]="KRUK[i].sounds" (input)="KRUK[i].sounds = $event.target.value">
-          </md-input-container>
-        <br />
-        <span *ngFor="let entry of KRUK[i] | keys">
-          <md-checkbox *ngIf="entry.key !== 'value' && entry.key !== 'pitch' && entry.key !== 'sounds'" 
-            [checked]="entry.value" (change)="KRUK[i][entry.key] = KRUK[i][entry.key] == 1 ? 0 : 1">{{entry.key}}</md-checkbox>
-        </span>
-        <hr />
-    </md-card>
-    
-</div>
-<br /><br />
-<button md-raised-button (click)="add()">Добавить крюк</button>
-<button md-raised-button (click)="save()">Сохранить</button>-->
 
 
 

@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { SimpletinyComponent } from './simpletiny.component';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
+//import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+//import {MatTableDataSource} from '@angular/material';
+import { MatCheckboxModule, MatFormFieldModule, MatTableModule, MatInputModule, MatGridListModule, MatOptionModule, MatSelectModule } from '@angular/material';
+
 
 import { KeysPipe } from './keys.pipe';
 import { LocalStorageModule } from 'angular-2-local-storage';
@@ -24,9 +26,11 @@ import { KrukfilterPipe } from './krukfilter.pipe';
   ],
   imports: [
     BrowserModule,
-    MaterialModule,
+    MatCheckboxModule, MatFormFieldModule, MatTableModule, MatInputModule, MatGridListModule, MatOptionModule,
+    MatSelectModule,
+    
     BrowserAnimationsModule,
-    AngularFontAwesomeModule,
+//    MatTableDataSource,
     FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
     LocalStorageModule.withConfig({
       prefix: 'my-app',
