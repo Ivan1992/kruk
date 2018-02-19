@@ -7,44 +7,38 @@
 
 <div align="center">
   <div align="left" [froalaEditor]="options" [(froalaModel)]="content" (froalaInit)="initialize($event)" ></div>
-    <!--<div [froalaView]="content"></div>
-    <h2> HTML </h2>
-    <div>{{content}}</div>-->
 </div>
 
 <div style="margin: auto; width: 50%; padding-top:40px">
 
-<mat-checkbox *ngFor="let c of notes" [(ngModel)]="c.value">{{c.name}}</mat-checkbox>
+<div class="flex">
+  <mat-checkbox *ngFor="let c of notes" [(ngModel)]="c.value" (change)="updateTable()">{{c.name}}</mat-checkbox>
+</div>
 
 <mat-form-field style="display:block">
-  <input matInput placeholder="Название">
+  <input type="text" matInput placeholder="Название (параклит, стопица...)" [ngModel]="name" (ngModelChange)="name = $event; updateTable();">
 </mat-form-field>
 
   <mat-form-field style="width:49%">
-    <input matInput placeholder="Кол-во звуков" [(ngModel)]="sounds">
+    <input matInput placeholder="Кол-во звуков" [ngModel]="sounds" (ngModelChange)="sounds=$event; updateTable()">
   </mat-form-field>
 
   <mat-form-field style="width:49%">
-    <mat-select placeholder="Признаки" multiple>
-      <mat-option *ngFor="let p of opts" [value]="p.value">{{p.label}}</mat-option>
+    <mat-select placeholder="Признаки" [formControl]="features" (change)="updateTable()" multiple>
+      <mat-option *ngFor="let p of opts" [value]="p.label">{{p.label}}</mat-option>
     </mat-select>
   </mat-form-field>
-
-  <!--<div>
-    <mat-checkbox *ngFor="let p of opts" [(ngModel)]="p.value">{{p.label}}</mat-checkbox>
-  </div>-->
 </div>
 
-  <mat-grid-list cols="6" class="kalashnikov centerTable" align="center" rowHeight="60px" style="cursor: pointer;">
-    <mat-grid-tile
-        *ngFor="let item of doubleArray"
-        style.background = "lightblue"
-        [ngClass]="item.clazz ? item.clazz : ''"
-        [innerHtml]="item.value"
-        (click)="addValue(item.value)">
-    </mat-grid-tile>
-  </mat-grid-list>
-
+<mat-grid-list cols="6" class="kalashnikov centerTable" align="center" rowHeight="60px" style="cursor: pointer; margin-bottom:200px;">
+  <mat-grid-tile
+      *ngFor="let item of current_KRUK"
+      style.background = "lightblue"
+      [ngClass]="item.clazz ? item.clazz : ''"
+      [innerHtml]="item.value"
+      (click)="addValue(item.value)">
+  </mat-grid-tile>
+</mat-grid-list>
 
 <!--<table class="kalashnikov centerTable" align="center">
   <tr *ngFor="let row of doubleArray">

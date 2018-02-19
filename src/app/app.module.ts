@@ -14,7 +14,7 @@ import { MatCheckboxModule, MatFormFieldModule, MatTableModule, MatInputModule, 
 
 import { KeysPipe } from './keys.pipe';
 import { LocalStorageModule } from 'angular-2-local-storage';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { KrukfilterPipe } from './krukfilter.pipe';
 
 @NgModule({
@@ -28,7 +28,7 @@ import { KrukfilterPipe } from './krukfilter.pipe';
     BrowserModule,
     MatCheckboxModule, MatFormFieldModule, MatTableModule, MatInputModule, MatGridListModule, MatOptionModule,
     MatSelectModule,
-    
+    ReactiveFormsModule,
     BrowserAnimationsModule,
 //    MatTableDataSource,
     FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
