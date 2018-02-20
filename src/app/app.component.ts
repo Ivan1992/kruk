@@ -1,5 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
-import { LocalStorageService } from 'angular-2-local-storage';
+//import { LocalStorageService } from 'angular-2-local-storage';
 import { MatTableDataSource } from '@angular/material';
 import {FormControl} from '@angular/forms';
 
@@ -276,7 +276,7 @@ export class AppComponent implements AfterViewInit {
   sounds = 0;
 
 
-  constructor(private localStorageService: LocalStorageService) {}
+//  constructor(private localStorageService: LocalStorageService) {}
 
   ngAfterViewInit() {
     this.initControls.initialize();
@@ -306,6 +306,14 @@ export class AppComponent implements AfterViewInit {
     }
   }
 
+  resetSearch() {
+    this.notes.forEach(v => v.value = false);
+    this.name = "";
+    this.sounds = 0;
+    this.features.reset();
+    this.updateTable();
+  }
+
   addValue(value) {
     this.initControls.getEditor()('selection.restore');
     this.initControls.getEditor()('html.insert', "<span class='kalashnikov'>"+value+"</span>");
@@ -314,11 +322,11 @@ export class AppComponent implements AfterViewInit {
   }
 
   getCookie(key: string)  {
-		return this.localStorageService.get(key);
+		//return this.localStorageService.get(key);
 	}
 	
 	putCookie(key: string, value: string){
-		return this.localStorageService.set(key, value);
+		//return this.localStorageService.set(key, value);
 	}
 
   save() {

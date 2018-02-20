@@ -28,7 +28,15 @@
       <mat-option *ngFor="let p of opts" [value]="p.label">{{p.label}}</mat-option>
     </mat-select>
   </mat-form-field>
+
+  <div style="display:block; text-align:center">
+    <button mat-raised-button color="primary" (click)="resetSearch()">Очистить поиск</button>
+  </div>
+
 </div>
+
+
+
 
 <mat-grid-list cols="6" class="kalashnikov centerTable" align="center" rowHeight="100px" style="cursor: pointer; margin-bottom:200px;">
   <mat-grid-tile
@@ -36,7 +44,10 @@
       style.background = "lightblue"
       [ngClass]="item.clazz ? item.clazz : ''"
       [innerHtml]="item.value"
-      (click)="addValue(item.value)">
+      (click)="addValue(item.value)"
+      placement="top" [ngbTooltip]="tipContent">
+
+      <ng-template #tipContent><b>{{item.name}}</b> <br /> Кол-во звуков: <b>{{item.sounds}}</b></ng-template>
   </mat-grid-tile>
 </mat-grid-list>
 
