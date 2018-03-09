@@ -1,6 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
 //import { LocalStorageService } from 'angular-2-local-storage';
-import { MatTableDataSource } from '@angular/material';
 import {FormControl} from '@angular/forms';
 
 
@@ -273,7 +272,7 @@ export class AppComponent implements AfterViewInit {
           {name: "фа", value: false},
           {name: "соль", value: false},
           {name: "ля", value: false}];
-  sounds = 0;
+  sounds = null;
   
 
   ngAfterViewInit() {
@@ -361,7 +360,7 @@ export class AppComponent implements AfterViewInit {
     },
     fontFamilySelection: true,
     placeholderText: "Наберите текст...",
-    width: '80%',
+    width: '90%',
     height: '400',
     colorsText: ['#000000', '#FF0000', 'REMOVE'],
     fontFamily: {
