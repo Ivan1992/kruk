@@ -11,52 +11,54 @@
 
 <div style="margin: auto; width: 50%; padding-top:40px">
 
-<div class="flex">
-  <mat-checkbox *ngFor="let c of notes" [(ngModel)]="c.value" (change)="updateTable()">{{c.name}}</mat-checkbox>
-</div>
+  <div class="row mb-3">
+    <div class="justify-content-center col-12 btn-group btn-group-toggle" data-toggle="buttons" >
+      <label *ngFor="let c of notes" class="btn btn-outline-primary col-1" ngbButtonLabel>
+        <input [(ngModel)]="c.value" (change)="updateTable()" type="checkbox" ngbButton > {{c.name}}
+      </label>
+    </div>
+  </div>
 
-<mat-form-field style="display:block">
-  <input type="text" matInput placeholder="Название (параклит, стопица...)" [ngModel]="name" (ngModelChange)="name = $event; updateTable();">
-</mat-form-field>
+  <div class="row mb-3 mt-3 justify-content-around">
+    <div class="col">
+        <input class="form-control" type="text" placeholder="Название (параклит, стопица...)" [ngModel]="name" (ngModelChange)="name = $event; updateTable();">
+    </div>
+    <div class="col">
+        <input #zvuki class="form-control" type="text" placeholder="Кол-во звуков" [ngModel]="sounds" (ngModelChange)="sounds = $event; updateTable();" (focus)="zvuki.value=''">
+    </div>
+  </div>
 
-  <mat-form-field style="width:49%">
-    <input matInput placeholder="Кол-во звуков" [ngModel]="sounds" (ngModelChange)="sounds=$event; updateTable()">
-  </mat-form-field>
+  <div class="row mb-2">
+    <div class="justify-content-center col-12 btn-group btn-group-toggle" ngbRadioGroup [(ngModel)]="features">
+      <label *ngFor="let p of opts" class="btn btn-outline-primary" ngbButtonLabel >
+        <input [value]="p.label" (change)="updateTable()" type="radio" ngbButton> {{p.label}}
+      </label>
+    </div>
+  </div>
 
-  <mat-form-field style="width:49%">
-    <mat-select placeholder="Признаки" [formControl]="features" (change)="updateTable()" multiple>
-      <mat-option *ngFor="let p of opts" [value]="p.label">{{p.label}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <div style="display:block; text-align:center">
-    <button mat-raised-button color="primary" (click)="resetSearch()">Очистить поиск</button>
+  <div class="row justify-content-center">
+    <div class="">
+      <button class="btn btn-secondary" (click)="resetSearch()">Очистить поиск</button>
+    </div>
   </div>
 
 </div>
 
 
 
+<div>
+  <div class="kalashnikov centerTable row justify-content-around col-md-8 offset-md-2" style="cursor: pointer; margin-bottom:200px;">
+    <div *ngFor="let item of current_KRUK"
+    style.background = "lightblue"
+    [ngClass]="item.clazz ? item.clazz : ''"
+    class="p-2 m-2"
+    [innerHtml]="item.value"
+    (click)="addValue(item.value)"
+    placement="top" [ngbTooltip]="tipContent">
 
-<mat-grid-list cols="6" class="kalashnikov centerTable" align="center" rowHeight="100px" style="cursor: pointer; margin-bottom:200px;">
-  <mat-grid-tile
-      *ngFor="let item of current_KRUK"
-      style.background = "lightblue"
-      [ngClass]="item.clazz ? item.clazz : ''"
-      [innerHtml]="item.value"
-      (click)="addValue(item.value)"
-      placement="top" [ngbTooltip]="tipContent">
-
-      <ng-template #tipContent><b>{{item.name}}</b> <br /> Кол-во звуков: <b>{{item.sounds}}</b></ng-template>
-  </mat-grid-tile>
-</mat-grid-list>
-
-<!--<table class="kalashnikov centerTable" align="center">
-  <tr *ngFor="let row of doubleArray">
-    <td *ngFor="let item of row | krukfilter: opts:notes:sounds:opts[0].value:opts[1].value:opts[2].value:opts[3].value:opts[4].value:opts[5].value:opts[6].value:opts[7].value:opts[8].value:opts[9].value:opts[10].value:opts[11].value:opts[12].value:notes[0].value:notes[1].value:notes[2].value:notes[3].value:notes[4].value:notes[5].value" [ngClass]="item.clazz ? item.clazz : ''" (mouseenter)="hoverIn(item)" (mouseleave)="hoverOut(item)" [innerHtml]="item.value" (click)="addValue(item.value)" style="padding: 5px;"></td>
-  </tr>
-</table>
-</div>-->
+    <ng-template #tipContent><b>{{item.name}}</b> <br /> Кол-во звуков: <b>{{item.sounds}}</b></ng-template>
+  </div>
+</div>
 
 
 
