@@ -44,14 +44,14 @@
 
 </div>
 
+<!-- [ngClass]="item.clazz ? item.clazz : ''" -->
 
 
 <div>
   <div class="kalashnikov centerTable row justify-content-around col-md-8 offset-md-2" style="cursor: pointer; margin-bottom:200px;">
     <div *ngFor="let item of current_KRUK"
-    style.background = "lightblue"
-    [ngClass]="item.clazz ? item.clazz : ''"
-    class="p-2 m-2"
+    style.background = "lightblue"    
+    class="p-2 m-2 gb"
     [innerHtml]="item.value"
     (click)="addValue(item.value)"
     placement="top" [ngbTooltip]="tipContent">
